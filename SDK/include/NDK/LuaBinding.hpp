@@ -68,6 +68,7 @@ namespace Ndk
 
 			#ifndef NDK_SERVER
 			// Audio
+			Nz::LuaClass<Nz::Audio> audioClass;
 			Nz::LuaClass<Nz::Music> musicClass;
 			Nz::LuaClass<Nz::Sound> soundClass;
 			Nz::LuaClass<Nz::SoundBufferRef> soundBuffer;

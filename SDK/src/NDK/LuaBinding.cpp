@@ -38,6 +38,7 @@ namespace Ndk
 	,
 
 	// Audio
+    audioClass("Audio"),
 	musicClass("Music"),
 	soundClass("Sound"),
 	soundBuffer("SoundBuffer"),

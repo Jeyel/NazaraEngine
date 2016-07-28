@@ -8,6 +8,33 @@ namespace Ndk
 {
 	void LuaBinding::BindAudio()
 	{
+        /*********************************** Nz::Audio **********************************/
+		audioClass.Inherit(soundEmitter);
+
+		audioClass.BindDefaultConstructor();
+
+		audioClass.BindStaticMethod("GetAudioFormat", &Nz::Audio::GetAudioFormat);
+		audioClass.BindStaticMethod("GetDopplerFactor", &Nz::Audio::GetDopplerFactor);
+		audioClass.BindStaticMethod("GetGlobalVolume", &Nz::Audio::GetGlobalVolume);
+		audioClass.BindStaticMethod("GetListenerDirection", &Nz::Audio::GetListenerDirection);
+		audioClass.BindStaticMethod("GetListenerPosition", &Nz::Audio::GetListenerPosition);
+		audioClass.BindStaticMethod("GetListenerRotation", &Nz::Audio::GetListenerRotation);
+		audioClass.BindStaticMethod("GetListenerVelocity", &Nz::Audio::GetListenerVelocity);
+		audioClass.BindStaticMethod("GetSpeedOfSound", &Nz::Audio::GetSpeedOfSound);
+
+		audioClass.BindStaticMethod("Initialize", &Nz::Audio::Initialize);
+
+		audioClass.BindStaticMethod("IsFormatSupported", &Nz::Audio::IsFormatSupported);
+		audioClass.BindStaticMethod("IsInitialized", &Nz::Audio::IsInitialized);
+
+		audioClass.BindStaticMethod("SetDopplerFactor", &Nz::Audio::SetDopplerFactor);
+		audioClass.BindStaticMethod("SetGlobalVolume", &Nz::Audio::SetGlobalVolume);
+		audioClass.BindStaticMethod("SetListenerDirection", (void(*)(const Nz::Vector3f&)) &Nz::Audio::SetListenerDirection);
+		audioClass.BindStaticMethod("SetListenerPosition", (void(*)(const Nz::Vector3f&)) &Nz::Audio::SetListenerPosition);
+		audioClass.BindStaticMethod("SetListenerRotation", &Nz::Audio::SetListenerRotation);
+		audioClass.BindStaticMethod("SetListenerVelocity", (void(*)(const Nz::Vector3f&)) &Nz::Audio::SetListenerVelocity);
+		audioClass.BindStaticMethod("GetSpeedOfSound", &Nz::Audio::GetSpeedOfSound);
+
 		/*********************************** Nz::Music **********************************/
 		musicClass.Inherit(soundEmitter);
 
@@ -166,6 +193,7 @@ namespace Ndk
 
 	void LuaBinding::RegisterAudio(Nz::LuaInstance& instance)
 	{
+		audioClass.Register(instance);
 		musicClass.Register(instance);
 		soundClass.Register(instance);
 		soundBuffer.Register(instance);
